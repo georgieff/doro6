@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "./node_modules/nodemon/bin/nodemon.js server.js",
     "server": "node server.js",
+    "forever": "forever start --minUptime 1000 --spinSleepTime 1000 ./forever.json",
     "lint": "eslint ./*.js ./**/*.js",
     "lint-fix": "eslint ./*.js ./**/*.js --fix"
   },

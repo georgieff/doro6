@@ -15,3 +15,9 @@ rename `.env.example` to `.env` and set your fb app id and secret key.\
 `npm run  server` for prod? :todo:\
 `npm run lint` for es linting\
 `npm run lint-fix` fix lint errors\
+
+### prod
+
+use forever (`npm install forever -g`)\
+then `npm run forever`
+to stop it `forever stop doro6`

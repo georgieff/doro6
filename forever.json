@@ -1,0 +1,7 @@
+{
+    "uid": "doro6",
+    "append": true,
+    "watch": true,
+    "script": "server.js",
+    "sourceDir": "./"
+}
