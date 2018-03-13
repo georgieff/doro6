@@ -1,12 +1,13 @@
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const {cl} = require('../log');
 
 const addTo = (app) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
 
     app.get('/', (req, res) => {
-        res.send('---home' + (req.user ? req.user.name : '') );
+        res.send('<a href="/fb">login</a>' + (req.user ? req.user.name : '') );
     });
 
     app.get('/fb', passport.authenticate('facebook'));
@@ -16,6 +17,11 @@ const addTo = (app) => {
         passport.authenticate('facebook', {failureRedirect: '/login'}),
         (req, res) => {
             // Successful authentication, redirect home.
+            let m = 'SUCC auth user '
+            + req.user.displayName
+            + ' with id '
+            + req.user.id;
+            cl('auth', m);
             res.redirect('/profile');
         }
     );
@@ -36,6 +42,11 @@ const addTo = (app) => {
     });
 
     app.get('/logout', (req, res) => {
+        let m = 'SUCC logout user '
+        + req.user.displayName
+        + ' with id '
+        + req.user.id;
+        cl('logout', m);
         req.logout();
         req.session.destroy();
         res.redirect('/');
@@ -43,11 +54,9 @@ const addTo = (app) => {
 
     app.get('/profile', require('connect-ensure-login').ensureLoggedIn(),
         (req, res) => {
-            console.log('========');
-            console.log(req.user);
-            console.log('========');
             res.send('profile ' + req.user.displayName +
-             ` <img src="${req.user.photos[0].value}" />` );
+             ` <img src="${req.user.photos[0].value}" />` + '<br>'
+            + '<a href="/logout">logout</a>');
     });
 
     app.get('*', (req, res) => {

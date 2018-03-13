@@ -9,7 +9,7 @@ passport with fb auth.
 
 rename `.env.example` to `.env` and set your fb app id and secret key.\
 .then(\
-`npm install`\
+`npm install` or `yarn install`\
 .done(() => available commands;)\
 `npm run dev` for development\
 `npm run  server` for prod? :todo:\
