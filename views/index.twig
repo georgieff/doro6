@@ -1,0 +1,21 @@
+{% extends './partials/_layout.twig' %}
+
+{% block body %}
+
+    {% if model.hasSession %}
+        <h4>Hey, {{ model.fullName }}</h4>
+        <div>
+            <img src="{{ model.photo }}" alt="" />
+        </div>
+        {% if model.hasPermission %}
+            <a href="#open-door" class="button -good">Open the door</a>
+        {% endif %}
+        <div>
+            <a href="/logout" class="button -bad">Log out</a>
+        </div>
+    {% else %}
+        <h4>Who are you?</h4>
+        <a href="/fb" class="button">Log in using FB</a>
+    {% endif %}
+
+{% endblock body %}
