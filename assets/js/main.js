@@ -3,15 +3,13 @@ window.onload = () => {
   const button = document.getElementById('doro-opener');
   button.classList.remove('-hidden');
 
-  const openDoor = () => {
+  const openDoor = (event) => {
+    event.preventDefault();
     if (blocked) return false;
     button.classList.add('-loading');
     blocked = true;
 
-    axios.post('/api/doro6', {
-      firstName: 'Fred',
-      lastName: 'Flintstone',
-      })
+    axios.post('/api/doro6')
       .then((response) => {
         if (response.data.error) {
           button.classList.add('-error');

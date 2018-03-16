@@ -14,6 +14,8 @@ const addData = (data) => {
         express.static( __dirname + './../assets'));
     app.use('/axios',
         express.static( __dirname + './../node_modules/axios/dist'));
+    app.use('/favicon.ico',
+        express.static( __dirname + './../favicon.ico'));
 
     require('./auth').addTo(app);
     require('./router').init(app, data);

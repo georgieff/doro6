@@ -7,7 +7,7 @@ require('dotenv-safe').config();
 passport.use(new FacebookStrategy({
         clientID: process.env.fb_id,
         clientSecret: process.env.fb_secret, // seccret
-        callbackURL: 'http://localhost:3456/fb/callback',
+        callbackURL: '/fb/callback',
         profileFields: ['id', 'displayName', 'photos'],
     },
         (accessToken, refreshToken, profile, cb) => {
