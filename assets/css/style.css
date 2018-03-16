@@ -27,11 +27,18 @@ body {
     flex-direction: column;
 }
 
-h4 {
+
+h4,
+h6 {
     font-size: 24px;
     letter-spacing: .02em;
     margin: 0;
     padding: 0;
+}
+
+h6 {
+    font-size: 18px;
+    margin-top: 10px;
 }
 
 .button {
