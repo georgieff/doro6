@@ -10,7 +10,11 @@
             <img src="{{ model.photo }}" alt="" />
         </div>
         {% if model.hasPermission %}
-            <a href="#open-door" class="button -good">Open the door</a>
+            <a href="#open-door" id="doro-opener" class="button -good -hidden">
+                Open the door
+                <span>Opening</span>
+            </a>
+            <span class="error">Error happened. Please contact Lubo.</span>
         {% endif %}
         <a href="/logout" class="button -bad">Log out</a>
     {% else %}
@@ -19,3 +23,10 @@
     {% endif %}
 
 {% endblock body %}
+
+{% if model.hasPermission %}
+    {% block js %}
+        <script src="/axios/axios.min.js"></script>
+        <script src="/assets/js/main.js"></script>
+    {% endblock %}
+{% endif %}

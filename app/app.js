@@ -9,10 +9,14 @@ const addData = (data) => {
 
     app.set('view engine', 'twig');
     app.set('views', __dirname + './../views');
-    app.use('/assets', express.static( __dirname + './../assets'));
+
+    app.use('/assets',
+        express.static( __dirname + './../assets'));
+    app.use('/axios',
+        express.static( __dirname + './../node_modules/axios/dist'));
 
     require('./auth').addTo(app);
-    require('./router').addTo(app);
+    require('./router').init(app, data);
 
     return app;
 };

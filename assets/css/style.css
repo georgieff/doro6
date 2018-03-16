@@ -4,11 +4,15 @@ body {
     margin: 0;
 }
 .content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
     background: url('../images/bg.jpg') no-repeat center center;
     background-size: cover;
 
@@ -34,6 +38,10 @@ h6 {
     letter-spacing: .02em;
     margin: 0;
     padding: 0;
+}
+
+img {
+    margin-top: 5px;
 }
 
 h6 {
@@ -79,6 +87,34 @@ h6 {
 .button.-bad:hover,
 .button.-bad:active {
     background: #680000;
+}
+
+.button.-hidden {
+    display: none;
+}
+
+.button span {
+    font-size: 0;
+}
+
+.button.-loading {
+    font-size: 0px;
+    background: #4D8059;
+}
+
+.button.-loading span {
+    font-size: 18px;
+}
+
+.button + .error {
+    display: none;
+}
+
+.button.-error + .error {
+    display: block;
+    font-weight: 300;
+    letter-spacing: .01em;
+    margin-top: 10px;
 }
 
 .nowrap {

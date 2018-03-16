@@ -3,13 +3,13 @@ const passport = require('passport');
 const {cl} = require('../log');
 const userModel = require('./userModel');
 
-const addTo = (app) => {
+const init = (app, data) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
 
     app.get('/', (req, res) => {
         res.render('index', {
-            model: userModel(req.user),
+            model: userModel(req.user, data),
         });
     });
 
@@ -29,7 +29,7 @@ const addTo = (app) => {
     );
 
     app.get('/logout', (req, res) => {
-        let m = 'SUCC logout user '
+        const m = 'SUCC logout user '
         + req.user.displayName
         + ' with id '
         + req.user.id;
@@ -39,15 +39,34 @@ const addTo = (app) => {
         res.redirect('/');
     });
 
-    /* TODO:
-        app.post('/api/checkpost', (req, res) => {
-            const body = req.body;
-            console.log('request detected');
-            console.log(body);
-            res.status(201)
-                .send(true);
-        });
-    */
+    app.post('/api/doro6', require('connect-ensure-login').ensureLoggedIn(),
+        (req, res) => {
+            const user = userModel(req.user, data);
+            if (!user.hasPermission) {
+                const m = 'INVALID request - user'
+                + req.user.displayName
+                + ' with id '
+                + req.user.id
+                + ' to open the door';
+                cl('error', m);
+                res.status(403).json({
+                    'error': 'forbidden',
+                });
+            }
+            const m = 'POST from '
+            + req.user.displayName
+            + ' with id '
+            + req.user.id
+            + ' to open the door';
+            cl('post', m);
+
+            const doro = require('./doro')();
+            doro.then((result) => {
+                res.status(204).send();
+            }, (err) => {
+                res.status(202).json({'error': err});
+            });
+    });
 
     app.get('*', (req, res) => {
         res.status(404)
@@ -57,4 +76,4 @@ const addTo = (app) => {
     });
 };
 
-module.exports = {addTo};
+module.exports = {init};
