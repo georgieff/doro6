@@ -12,12 +12,13 @@ const doro = () => {
                 if (err) {
                     cl('error', 'DOOR FAILED! - ' + err);
                     reject(err);
+                } else {
+                    cl('system', 'PROD - DOOR OPENED!');
+                    resolve({
+                        'door': 'opened',
+                        'error': '',
+                    });
                 }
-                cl('system', 'PROD - DOOR OPENED!');
-                resolve({
-                    'door': 'opened',
-                    'error': '',
-                });
             });
         } else {
             cl('system', 'DEV ENV - OPENING DOOR');
