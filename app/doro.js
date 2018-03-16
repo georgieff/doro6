@@ -9,7 +9,7 @@ const doro = () => {
         // IS PROD?
         if (process.env.env==='prod') {
             // TODO
-            PythonShell.run(resolver('../py/doro.py'), (err) => {
+            PythonShell.run(resolver('/py/doro.py'), (err) => {
                 if (err) {
                     cl('error', 'DOOR FAILED! - ' + err);
                     reject(err);
