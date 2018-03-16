@@ -2,13 +2,14 @@
 require('dotenv-safe').config();
 const PythonShell = require('python-shell');
 const {cl} = require('../log');
+const resolver = require('path').resolve;
 
 const doro = () => {
     return new Promise((resolve, reject) => {
         // IS PROD?
         if (process.env.env==='prod') {
             // TODO
-            PythonShell.run('../py/doro.py', (err) => {
+            PythonShell.run(resolver('../py/doro.py'), (err) => {
                 if (err) {
                     cl('error', 'DOOR FAILED! - ' + err);
                     reject(err);
