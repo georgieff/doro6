@@ -19,6 +19,7 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #fff;
 }
+
 .bg {
     padding: 40px 20px;
     min-width: 240px;
@@ -29,8 +30,13 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    overflow-y: auto;
 }
 
+.doc {
+    max-height: 400px;
+    max-width: 600px;
+}
 
 h4,
 h6 {
@@ -47,6 +53,11 @@ img {
 h6 {
     font-size: 18px;
     margin-top: 10px;
+}
+
+p {
+    margin-bottom: 0px;
+    margin-top: 20px;
 }
 
 .button {

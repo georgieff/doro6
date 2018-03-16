@@ -39,6 +39,10 @@ const init = (app, data) => {
         res.redirect('/');
     });
 
+    app.get('/privacy-policy', (req, res) => {
+        res.render('privacy-policy');
+    });
+
     app.post('/api/doro6', require('connect-ensure-login').ensureLoggedIn(),
         (req, res) => {
             const user = userModel(req.user, data);
