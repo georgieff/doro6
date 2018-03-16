@@ -1,0 +1,79 @@
+
+body {
+    padding: 0;
+    margin: 0;
+}
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background: url('../images/bg.jpg') no-repeat center center;
+    background-size: cover;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #fff;
+}
+.bg {
+    padding: 40px 20px;
+    min-width: 240px;
+    min-height: 200px;
+    background: rgba(0, 0, 0, .6);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h4 {
+    font-size: 24px;
+    letter-spacing: .02em;
+    margin: 0;
+    padding: 0;
+}
+
+.button {
+    display: block;
+    width: 80%;
+    padding: 20px 20px;
+    font-size: 18px;
+    color: #fff;
+    background: #3B5998;
+    border-radius: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button:hover,
+.button:active {
+    background: #2F4779;
+}
+
+.button.-good {
+    background: #61A070;
+}
+
+.button.-good:hover,
+.button.-good:active {
+    background: #4D8059;
+}
+
+.button.-bad {
+    font-size: 12px;
+    padding: 5px 20px;
+    margin-top: 40px;
+    background: #830000;
+}
+
+.button.-bad:hover,
+.button.-bad:active {
+    background: #680000;
+}
+
+.nowrap {
+    white-space: nowrap;
+}

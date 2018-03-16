@@ -9,6 +9,7 @@ const addData = (data) => {
 
     app.set('view engine', 'twig');
     app.set('views', __dirname + './../views');
+    app.use('/assets', express.static( __dirname + './../assets'));
 
     require('./auth').addTo(app);
     require('./router').addTo(app);

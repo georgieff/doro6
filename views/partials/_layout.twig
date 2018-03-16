@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>doro6 {% if model.title is defined %} | {{ model.title }} {% endif %}</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 </head>
 <body>
-    {% block body %}
-    {% endblock %}
+    <div class="content">
+        <div class="bg">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
 </body>
 </html>

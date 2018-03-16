@@ -15,8 +15,7 @@ const addTo = (app) => {
 
     app.get('/fb', passport.authenticate('facebook'));
 
-    app.get(
-        '/fb/callback',
+    app.get('/fb/callback',
         passport.authenticate('facebook', {failureRedirect: '/'}),
         (req, res) => {
             // Successful authentication, redirect home.
@@ -40,8 +39,7 @@ const addTo = (app) => {
         res.redirect('/');
     });
 
-    /*
-        TODO:
+    /* TODO:
         app.post('/api/checkpost', (req, res) => {
             const body = req.body;
             console.log('request detected');
